@@ -23,7 +23,7 @@ Clone this repository and open Main.xaml with UiPath Community edition.
 ## Screenshots
 <p>
   <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Screenshots/User_input_excel.png" width="1366" height="768" alt="User_input_excel">
-   <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Screenshots/Booking_window.png" width="1366" height="768" alt="Booking_window">
+   <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Screenshots/Booking_window.png" width="351" height="484" alt="Booking_window">
   <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Screenshots/Booking_ticket.png" width="1366" height="768" alt="Booking_ticket">
 </p>
 
