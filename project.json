@@ -1,0 +1,53 @@
+{
+  "name": "TatkalBooking",
+  "description": "To book a Tatkal ticket in IRCTC portal",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath": "19.4.7054.14370",
+    "UiPath.Cognitive.Activities": "2.2.1",
+    "UiPath.ComputerVision.Activities": "1.0.1",
+    "UiPath.Credentials.Activities": "1.1.6479.13204",
+    "UiPath.Cryptography.Activities": "1.0.7053.27728",
+    "UiPath.Database.Activities": "1.2.6863.32528",
+    "UiPath.DataRobot.Activities": "0.1.6925.26877",
+    "UiPath.DocumentProcessing.Contracts": "1.0.0",
+    "UiPath.Excel.Activities": "[2.5.3]",
+    "UiPath.FTP.Activities": "1.0.7053.27728",
+    "UiPath.GoogleSpeech.Activities": "0.1.6850.39757",
+    "UiPath.GoogleVision.Activities": "0.1.6852.1955",
+    "UiPath.GSuite.Activities": "1.1.0",
+    "UiPath.IntelligentOCR.Activities": "2.0.0",
+    "UiPath.Java.Activities": "1.0.7053.27728",
+    "UiPath.Mail.Activities": "[1.4.0]",
+    "UiPath.MicrosoftTxtRecognizer.Activities": "0.1.6850.37240",
+    "UiPath.MicrosoftVision.Activities": "0.1.6849.15877",
+    "UiPath.PDF.Activities": "2.0.0",
+    "UiPath.Python.Activities": "1.1.6863.33404",
+    "UiPath.Script.Activities": "1.0.6710.16240",
+    "UiPath.System.Activities": "[19.4.0]",
+    "UiPath.System.Extended.Activities": "1.0.1",
+    "UiPath.Terminal.Activities": "1.3.1",
+    "UiPath.UIAutomation.Activities": "[19.4.1]",
+    "UiPath.Vision": "1.5.0",
+    "UiPath.WebAPI.Activities": "1.4.1",
+    "UiPath.Word.Activities": "1.3.1",
+    "UiPathTeam.File.Activities": "1.0.4"
+  },
+  "schemaVersion": "3.2",
+  "studioVersion": "19.4.2.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ]
+  },
+  "projectType": "Workflow",
+  "libraryOptions": {
+    "includeOriginalXaml": false,
+    "privateWorkflows": []
+  },
+  "webServices": []
+}

@@ -1,0 +1,726 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="BookingTrain" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>2515,7270</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.Interactive.Async</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="BookingTrain" sap:VirtualizedContainerService.HintSize="2475,7070" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+      <Variable x:TypeArguments="x:Boolean" Name="booking_available" />
+      <Variable x:TypeArguments="x:Boolean" Name="confirmation_window" />
+      <Variable x:TypeArguments="x:String" Default="tatkal" Name="quota" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="2453,6946" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="x:String" Name="classPreference_var" />
+        <Variable x:TypeArguments="x:String" Default="1" Name="noOfPassangers" />
+        <Variable x:TypeArguments="x:Boolean" Default="True" Name="reverse" />
+        <Variable x:TypeArguments="ui:GenericValue" Name="row_index" />
+        <Variable x:TypeArguments="ui:GenericValue" Name="waiting_list" />
+        <Variable x:TypeArguments="x:Boolean" Name="ticket_status" />
+        <Variable x:TypeArguments="x:Boolean" Name="tqwl_exists" />
+        <Variable x:TypeArguments="x:Boolean" Name="rac_exists" />
+        <Variable x:TypeArguments="x:Boolean" Name="available_exists" />
+      </TryCatch.Variables>
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="2435,6719" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:TypeInto DelayBefore="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayBetweenKeys="200" DisplayName="Type Into 'INPUT'" EmptyField="True" sap:VirtualizedContainerService.HintSize="2413,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[in_Config(&quot;fromSource&quot;).ToString.ToUpper+ &quot;[k(enter)]&quot;]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="8d82ce27bb9a043e6fb49a1221721edc" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='origin' tag='INPUT' type='text' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+          <ui:TypeInto DelayBefore="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DelayBetweenKeys="200" DisplayName="Type Into 'INPUT'" EmptyField="True" sap:VirtualizedContainerService.HintSize="2413,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="[in_Config(&quot;toDestination&quot;).ToString.ToUpper+ &quot;[k(enter)]&quot;]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0c20f410fd6f15144a4864169b0ee029" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='destination' tag='INPUT' type='text' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="2413,455" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="486,377" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If Condition="[in_Config(&quot;reverse&quot;).ToString]" sap:VirtualizedContainerService.HintSize="464,253" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If.Then>
+                    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'I'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="c81d9b2c367e5364522236d24b953633" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;app-home&amp;gt;div&amp;gt;div&amp;gt;app-main-page&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;app-jp-input&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;a&amp;gt;i' parentid='divMain' tag='I' /&gt;" WaitForReady="INTERACTIVE" />
+                      </ui:Click.Target>
+                    </ui:Click>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ui:CommentOut.Body>
+          </ui:CommentOut>
+          <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'INPUT'" EmptyField="True" sap:VirtualizedContainerService.HintSize="2413,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="False" Text="[in_Config(&quot;travelDate&quot;).ToString]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="80b6ad2e9b594ec2f97b2ada2ff65158" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='divMain' tag='INPUT' type='text' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+          <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_Config(&quot;classPreference&quot;).ToString.ToUpper]" sap:VirtualizedContainerService.HintSize="2413,336" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+            <Switch.Default>
+              <Assign sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">All Classes</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Switch.Default>
+            <Assign x:Key="SL" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">Sleeper (SL)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="EA" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">Anubhuti Class (EA)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="1A" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">AC First Class (1A)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="EC" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">Exec. Chair Car (EC)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="2A" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">AC 2 Tier (2A)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="FC" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">First Class (FC)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="3A" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">AC 3 Tier (3A)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="3E" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">AC 3 Economy (3E)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="CC" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">AC Chair car (CC)</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign x:Key="2S" sap:VirtualizedContainerService.HintSize="242,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[classPreference_var]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">Second Sitting (2S)</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Switch>
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'LABEL'" sap:VirtualizedContainerService.HintSize="2413,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2ef7129173317d7c6fd8e0092e1c416c" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='journeyClass' tag='LABEL' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'LI'" sap:VirtualizedContainerService.HintSize="2413,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0e7ac045daa639c58c5d97fae39ceb31" Selector="[&quot;&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='&quot; +classPreference_var+&quot;' parentid='journeyClass' tag='SPAN' /&gt;&quot;]" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="2413,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f744acf62c2154d59b8c490f5604bd35" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='divMain' tag='BUTTON' type='submit' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="2413,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Quota" sap:VirtualizedContainerService.HintSize="2413,106" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="610e4a6347fb725e3a26611c2933d9d0" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='GENERAL' parentid='divMain' tag='LABEL' /&gt;" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="2413,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - TATKAL" sap:VirtualizedContainerService.HintSize="2413,106" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="81482ddd3cfc1fccab3c7c21a7e48887" Selector="[&quot;&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='&quot; +quota.ToUpper+&quot;' parentid='divMain' tag='SPAN' /&gt;&quot;]" WaitForReady="INTERACTIVE" />
+            </ui:Click.Target>
+          </ui:Click>
+          <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="2413,500" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'IRCTCNext Page'" sap:VirtualizedContainerService.HintSize="414,376" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="5f3aee315cd21a5f3fa1c21bda635584" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;">
+              <ui:BrowserScope.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="336,230" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExtractData NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[ExtractDataTable]" DelayBetweenPagesMS="300" DisplayName="Extract Structured Data 'DIV'" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;/row&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-4 col-sm-6 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='partner col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-4 col-sm-6 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='partner col-xs-12' idx='2'/&gt;&lt;webctrl tag='div' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Column3' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-4 col-sm-6 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='partner col-xs-12' idx='2'/&gt;&lt;webctrl tag='div' class='t_4 ' idx='1'/&gt;&lt;webctrl tag='span' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Column4' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-3 col-sm-6 col-xs-12 ' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-4 col-sm-4 col-xs-4 text-center' idx='1'/&gt;&lt;webctrl tag='h5' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Column5' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-3 col-sm-6 col-xs-12 ' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-4 col-sm-4 col-xs-4 text-center' idx='2'/&gt;&lt;webctrl tag='h5' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Column6' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-3 col-sm-6 col-xs-12 ' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-4 col-sm-4 col-xs-4 text-center' idx='3'/&gt;&lt;webctrl tag='h5' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Column7' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-5 col-sm-12 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-6 col-sm-6 col-xs-12' idx='1'/&gt;&lt;webctrl tag='form' class='ng-untouched ng-pristine ng-valid' idx='1'/&gt;&lt;webctrl tag='select' class='form-control ng-untouched ng-pristine ng-valid' idx='1'/&gt;&lt;/column&gt;&lt;column exact='1' name='Column8' attr='text'&gt;&lt;webctrl tag='div' class='col-md-10 col-sm-9 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='train-list' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='ng-star-inserted'/&gt;&lt;webctrl tag='div' class='train_avl_border_div' idx='1'/&gt;&lt;webctrl tag='app-train-avl-enq' idx='1'/&gt;&lt;webctrl tag='div' class='train_avl_enq_box fromAndToStn' idx='1'/&gt;&lt;webctrl tag='div' class='row' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-5 col-sm-12 col-xs-12' idx='1'/&gt;&lt;webctrl tag='div' class='col-md-6 col-sm-6 col-xs-12' idx='2'/&gt;&lt;webctrl tag='div' class='ng-star-inserted' idx='1'/&gt;&lt;webctrl tag='div' class='text-center' idx='1'/&gt;&lt;webctrl tag='button' class='form-control btn btn-primary' idx='1'/&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="100">
+                      <ui:ExtractData.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="b4c27f111aebb2bae6a9c9fe51ae6dc6" Selector="&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;app-home&amp;gt;div&amp;gt;div&amp;gt;app-train-list&amp;gt;div&amp;gt;div&amp;gt;div' parentid='divMain' tag='DIV' /&gt;" WaitForReady="COMPLETE" />
+                      </ui:ExtractData.Target>
+                    </ui:ExtractData>
+                  </Sequence>
+                </ActivityAction>
+              </ui:BrowserScope.Body>
+            </ui:BrowserScope>
+          </Sequence>
+          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[ExtractDataTable]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="2413,2273" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="2383,2125" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2361,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[row(&quot;Column1&quot;).ToString +&quot; &quot;+row(&quot;Column2&quot;).ToString+&quot; &quot;+row(&quot;Column3&quot;).ToString+&quot; &quot;+row(&quot;Column4&quot;).ToString+&quot; &quot;+row(&quot;Column5&quot;).ToString+&quot; &quot;+row(&quot;Column6&quot;).ToString+&quot; &quot;+row(&quot;Column7&quot;).ToString+&quot; &quot;+row(&quot;Column8&quot;).ToString]" />
+                  <If Condition="[row(&quot;Column1&quot;).ToString.Contains(in_Config(&quot;trainNo&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="2361,1900" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="2126,1752" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="2104,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="ui:GenericValue">[row_index]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="ui:GenericValue">[ExtractDataTable.Rows.IndexOf(row)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'DIV'" sap:VirtualizedContainerService.HintSize="2104,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="0440bc3173dae99e6b5ca684073c4427" Selector="[&quot;&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='(&quot; + in_Config(&quot;trainNo&quot;).ToString + &quot;) ' parentid='divMain' tag='DIV' /&gt;&quot;]" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <ui:Hover DelayBefore="{x:Null}" DelayMS="{x:Null}" sap:VirtualizedContainerService.HintSize="2104,68" sap2010:WorkflowViewState.IdRef="Hover_2" SendWindowMessages="False" SimulateHover="False">
+                          <ui:Hover.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Hover.CursorPosition>
+                          <ui:Hover.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="[&quot;&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='(&quot; + in_Config(&quot;trainNo&quot;).ToString + &quot;) ' parentid='divMain' tag='DIV' /&gt;&quot;]" WaitForReady="INTERACTIVE" />
+                          </ui:Hover.Target>
+                        </ui:Hover>
+                        <ui:Highlight Color="Gold" HighlightTime="1000" sap:VirtualizedContainerService.HintSize="2104,68" sap2010:WorkflowViewState.IdRef="Highlight_2">
+                          <ui:Highlight.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="[&quot;&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='(&quot; + in_Config(&quot;trainNo&quot;).ToString + &quot;) ' parentid='divMain' tag='DIV' /&gt;&quot;]" WaitForReady="INTERACTIVE" />
+                          </ui:Highlight.Target>
+                        </ui:Highlight>
+                        <ui:Hover DelayBefore="{x:Null}" DelayMS="{x:Null}" sap:VirtualizedContainerService.HintSize="2104,68" sap2010:WorkflowViewState.IdRef="Hover_3" SendWindowMessages="False" SimulateHover="False">
+                          <ui:Hover.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Hover.CursorPosition>
+                          <ui:Hover.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="[&quot;&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl id='check-availability' idx='&quot; + (row_index + 1) +&quot;' tag='BUTTON' /&gt;&quot;]" WaitForReady="INTERACTIVE" />
+                          </ui:Hover.Target>
+                        </ui:Hover>
+                        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON  check-availabil...'" sap:VirtualizedContainerService.HintSize="2104,106" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5cf21e36f460af290c9a11b0b2a59ed7" Selector="[&quot;&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl id='check-availability' idx='&quot; + (row_index + 1) +&quot;' tag='BUTTON' /&gt;&quot;]" WaitForReady="INTERACTIVE" />
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="2104,22" sap2010:WorkflowViewState.IdRef="Delay_3" />
+                        <Pick sap:VirtualizedContainerService.HintSize="2104,850" sap2010:WorkflowViewState.IdRef="Pick_1">
+                          <PickBranch DisplayName="PickBranch - Waiting List" sap:VirtualizedContainerService.HintSize="366,804" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+                            <PickBranch.Trigger>
+                              <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[tqwl_exists]" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="130486936f8edb92b84206398dee3def" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' TQWL*/WL*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                            </PickBranch.Trigger>
+                            <Sequence sap:VirtualizedContainerService.HintSize="336,438" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Highlight Color="Gold" HighlightTime="1000" sap:VirtualizedContainerService.HintSize="314,68" sap2010:WorkflowViewState.IdRef="Highlight_3">
+                                <ui:Highlight.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' TQWL*/WL*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:Highlight.Target>
+                              </ui:Highlight>
+                              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'SPAN'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="GetValue_4">
+                                <ui:GetValue.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9295e8c938d103febd4b35470180b4e4" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' TQWL*/WL*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:GetValue.Target>
+                                <ui:GetValue.Value>
+                                  <OutArgument x:TypeArguments="ui:GenericValue">[waiting_list]</OutArgument>
+                                </ui:GetValue.Value>
+                              </ui:GetValue>
+                              <Assign sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[ticket_status]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </PickBranch>
+                          <PickBranch DisplayName="PickBranch - RAC" sap:VirtualizedContainerService.HintSize="366,804" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+                            <PickBranch.Trigger>
+                              <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[rac_exists]" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="130486936f8edb92b84206398dee3def" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' RAC*/RAC*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                            </PickBranch.Trigger>
+                            <Sequence sap:VirtualizedContainerService.HintSize="336,438" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Highlight Color="Gold" HighlightTime="1000" sap:VirtualizedContainerService.HintSize="314,68" sap2010:WorkflowViewState.IdRef="Highlight_4">
+                                <ui:Highlight.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' RAC*/RAC*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:Highlight.Target>
+                              </ui:Highlight>
+                              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'SPAN'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="GetValue_6">
+                                <ui:GetValue.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9295e8c938d103febd4b35470180b4e4" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' RAC*/RAC*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:GetValue.Target>
+                                <ui:GetValue.Value>
+                                  <OutArgument x:TypeArguments="ui:GenericValue">[waiting_list]</OutArgument>
+                                </ui:GetValue.Value>
+                              </ui:GetValue>
+                              <Assign sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[ticket_status]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </PickBranch>
+                          <PickBranch DisplayName="PickBranch - AVAILABLE" sap:VirtualizedContainerService.HintSize="366,804" sap2010:WorkflowViewState.IdRef="PickBranch_3">
+                            <PickBranch.Trigger>
+                              <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[available_exists]" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="130486936f8edb92b84206398dee3def" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' AVAILABLE*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                            </PickBranch.Trigger>
+                            <Sequence sap:VirtualizedContainerService.HintSize="336,500" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Highlight Color="Gold" HighlightTime="1000" sap:VirtualizedContainerService.HintSize="314,68" sap2010:WorkflowViewState.IdRef="Highlight_5">
+                                <ui:Highlight.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' AVAILABLE*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:Highlight.Target>
+                              </ui:Highlight>
+                              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'SPAN'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="GetValue_7">
+                                <ui:GetValue.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9295e8c938d103febd4b35470180b4e4" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' AVAILABLE*' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:GetValue.Target>
+                                <ui:GetValue.Value>
+                                  <OutArgument x:TypeArguments="ui:GenericValue">[waiting_list]</OutArgument>
+                                </ui:GetValue.Value>
+                              </ui:GetValue>
+                              <Assign sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[ticket_status]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:Break sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="Break_1" />
+                            </Sequence>
+                          </PickBranch>
+                          <PickBranch sap:VirtualizedContainerService.HintSize="366,804" sap2010:WorkflowViewState.IdRef="PickBranch_4">
+                            <PickBranch.Variables>
+                              <Variable x:TypeArguments="x:Boolean" Name="regret_exists" />
+                            </PickBranch.Variables>
+                            <PickBranch.Trigger>
+                              <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[regret_exists]" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="130486936f8edb92b84206398dee3def" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' REGRET/TQWL* ' parentid='ui-panel-*-content' tag='SPAN' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                            </PickBranch.Trigger>
+                            <Sequence sap:VirtualizedContainerService.HintSize="336,400" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Highlight Color="Gold" HighlightTime="1000" sap:VirtualizedContainerService.HintSize="314,68" sap2010:WorkflowViewState.IdRef="Highlight_6">
+                                <ui:Highlight.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' REGRET/TQWL* ' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:Highlight.Target>
+                              </ui:Highlight>
+                              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="314,68" sap2010:WorkflowViewState.IdRef="GetValue_8">
+                                <ui:GetValue.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' REGRET/TQWL* ' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:GetValue.Target>
+                                <ui:GetValue.Value>
+                                  <OutArgument x:TypeArguments="ui:GenericValue">[waiting_list]</OutArgument>
+                                </ui:GetValue.Value>
+                              </ui:GetValue>
+                              <Assign sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[ticket_status]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </PickBranch>
+                          <PickBranch sap:VirtualizedContainerService.HintSize="366,804" sap2010:WorkflowViewState.IdRef="PickBranch_5">
+                            <PickBranch.Trigger>
+                              <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'SPAN'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="05a13b5d0129aa6788c0e7c87ccf7b24" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' NOT AVAILABLE ' parentid='ui-panel-*-content' tag='SPAN' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                            </PickBranch.Trigger>
+                            <Sequence sap:VirtualizedContainerService.HintSize="336,400" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:Highlight Color="Gold" HighlightTime="1000" sap:VirtualizedContainerService.HintSize="314,68" sap2010:WorkflowViewState.IdRef="Highlight_7">
+                                <ui:Highlight.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' NOT AVAILABLE ' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:Highlight.Target>
+                              </ui:Highlight>
+                              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="314,68" sap2010:WorkflowViewState.IdRef="GetValue_9">
+                                <ui:GetValue.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' NOT AVAILABLE ' parentid='ui-panel-*-content' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:GetValue.Target>
+                                <ui:GetValue.Value>
+                                  <OutArgument x:TypeArguments="ui:GenericValue">[waiting_list]</OutArgument>
+                                </ui:GetValue.Value>
+                              </ui:GetValue>
+                              <Assign sap:VirtualizedContainerService.HintSize="314,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[ticket_status]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </PickBranch>
+                        </Pick>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="Entered Train is not available" />
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+          </ui:ForEachRow>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="2413,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[waiting_list.ToString]" />
+          <If Condition="[waiting_list.Contains(&quot;AVAILABLE&quot;)]" sap:VirtualizedContainerService.HintSize="2413,209" sap2010:WorkflowViewState.IdRef="If_6">
+            <If.Then>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="Ticket Available" />
+            </If.Then>
+            <If.Else>
+              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="Ticket Not Available" />
+            </If.Else>
+          </If>
+          <ui:UiElementExists DisplayName="Element Exists - To check booking button available" Exists="[booking_available]" sap:VirtualizedContainerService.HintSize="2413,68" sap2010:WorkflowViewState.IdRef="UiElementExists_10">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='ui-panel-*-content' tag='BUTTON' type='submit' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+          <If Condition="[booking_available]" sap:VirtualizedContainerService.HintSize="2413,597" sap2010:WorkflowViewState.IdRef="If_7">
+            <If.Then>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Click_18" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="36e4750ce46ec709756516735737c28c" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='ui-panel-*-content' tag='BUTTON' type='submit' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="438,449" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,61" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="Booking not available" />
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="222,146" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <TerminateWorkflow DisplayName="Terminate Workflow" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" />
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                </ui:CommentOut>
+              </Sequence>
+            </If.Else>
+          </If>
+          <ui:UiElementExists DisplayName="Element Exists 'SPAN'" Exists="[confirmation_window]" sap:VirtualizedContainerService.HintSize="2413,106" sap2010:WorkflowViewState.IdRef="UiElementExists_11">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="3346cf37c00325008c2f02ad3f265ed9" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='Confirmation' parentid='divMain' tag='SPAN' /&gt;" TimeoutMS="3000" WaitForReady="INTERACTIVE" />
+            </ui:UiElementExists.Target>
+          </ui:UiElementExists>
+          <If Condition="[confirmation_window]" sap:VirtualizedContainerService.HintSize="2413,254" sap2010:WorkflowViewState.IdRef="If_8">
+            <If.Then>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'SPAN'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Click_19" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0173b89d7d7c1c147fe0ff19b55cbc2f" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='Ok' parentid='divMain' tag='SPAN' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+            </If.Then>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="2439,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="210,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[exception.Message.ToString + &quot;    &quot;+exception.StackTrace +&quot;    &quot;+exception.Data.ToString]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

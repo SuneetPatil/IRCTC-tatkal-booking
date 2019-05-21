@@ -1,0 +1,271 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CustomerDetailsPage" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>865,2451</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Interactive.Async</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CustomerDetailsPage" sap:VirtualizedContainerService.HintSize="825,2371" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="Manoj" Name="username" />
+      <Variable x:TypeArguments="x:String" Default="26" Name="age" />
+      <Variable x:TypeArguments="x:String" Default="Male" Name="gender" />
+      <Variable x:TypeArguments="x:String" Default="Upper" Name="seat_preference" />
+      <Variable x:TypeArguments="x:String" Default="India" Name="nationality" />
+      <Variable x:TypeArguments="x:String" Default="8105083941" Name="sms_mobile_num" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="Img" />
+      <Variable x:TypeArguments="x:String" Name="otp" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into - USERNAME" EmptyField="True" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[in_Config(&quot;username&quot;).ToString]">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="a782d00be4e2be6655dd8e1723759aaa" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl id='psgn-name' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:TypeInto.Target>
+    </ui:TypeInto>
+    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into - AGE" EmptyField="True" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="[in_Config(&quot;age&quot;).ToString]">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="21fd35ef22f9b95e3c97a6062a0b958c" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl tag='INPUT' type='number' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:TypeInto.Target>
+    </ui:TypeInto>
+    <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT'" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[in_Config(&quot;gender&quot;).ToString]">
+      <ui:SelectItem.Items>
+        <scg:List x:TypeArguments="x:String" Capacity="4">
+          <x:String>Gender</x:String>
+          <x:String>Male</x:String>
+          <x:String>Female</x:String>
+          <x:String>Transgender</x:String>
+        </scg:List>
+      </ui:SelectItem.Items>
+      <ui:SelectItem.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="bc9e54f91d75fc23b8375470df7582cc" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl idx='1' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:SelectItem.Target>
+    </ui:SelectItem>
+    <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT'" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[in_Config(&quot;seat_preference&quot;).ToString]">
+      <ui:SelectItem.Items>
+        <scg:List x:TypeArguments="x:String" Capacity="8">
+          <x:String>No Preference*</x:String>
+          <x:String>Lower</x:String>
+          <x:String>Middle</x:String>
+          <x:String>Upper</x:String>
+          <x:String>Side Lower</x:String>
+          <x:String>Side Upper</x:String>
+        </scg:List>
+      </ui:SelectItem.Items>
+      <ui:SelectItem.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7e396392983b54d24b024d3dce254f1e" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl idx='2' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:SelectItem.Target>
+    </ui:SelectItem>
+    <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'SELECT'" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="SelectItem_3" Item="[in_Config(&quot;nationality&quot;).ToString]">
+      <ui:SelectItem.Items>
+        <scg:List x:TypeArguments="x:String" Capacity="50">
+          <x:String>Nationality</x:String>
+          <x:String>Afghanistan</x:String>
+          <x:String>Aland Islands</x:String>
+          <x:String>Albania</x:String>
+          <x:String>Algeria</x:String>
+          <x:String>American Samoa</x:String>
+          <x:String>Andorra</x:String>
+          <x:String>Angola</x:String>
+          <x:String>Anguilla</x:String>
+          <x:String>Antarctica</x:String>
+          <x:String>Antigua and Barbuda</x:String>
+          <x:String>Argentina</x:String>
+          <x:String>Armenia</x:String>
+          <x:String>Aruba</x:String>
+          <x:String>Australia</x:String>
+          <x:String>Austria</x:String>
+          <x:String>Azerbaijan</x:String>
+          <x:String>Bahamas</x:String>
+          <x:String>Bahrain</x:String>
+          <x:String>Bangladesh</x:String>
+          <x:String>Barbados</x:String>
+          <x:String>Belarus</x:String>
+          <x:String>Belgium</x:String>
+          <x:String>Belize</x:String>
+          <x:String>Benin</x:String>
+          <x:String>Bermuda</x:String>
+          <x:String>Bhutan</x:String>
+          <x:String>Bolivia</x:String>
+          <x:String>Bonaire Sint Eustatius and Saba</x:String>
+          <x:String>Bosnia and Herzegovina</x:String>
+          <x:String>Botswana</x:String>
+          <x:String>Bouvet Island</x:String>
+          <x:String>Brazil</x:String>
+          <x:String>British Indian Ocean Territory</x:String>
+          <x:String>British Virgin Islands</x:String>
+          <x:String>Brunei Darussalam</x:String>
+          <x:String>Bulgaria</x:String>
+          <x:String>Burkina Faso</x:String>
+          <x:String>Burundi</x:String>
+          <x:String>CURACAO</x:String>
+          <x:String>Cambodia</x:String>
+          <x:String>Cameroon</x:String>
+          <x:String>Canada</x:String>
+          <x:String>Cape Verde</x:String>
+          <x:String>Cayman Islands</x:String>
+          <x:String>Central African Republic</x:String>
+          <x:String>Chad</x:String>
+          <x:String>Chile</x:String>
+          <x:String>China</x:String>
+          <x:String>Christmas Island</x:String>
+        </scg:List>
+      </ui:SelectItem.Items>
+      <ui:SelectItem.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7cfbf2d8eeb25eb1546ea110369ca9bd" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl idx='3' tag='SELECT' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:SelectItem.Target>
+    </ui:SelectItem>
+    <If Condition="[in_Config(&quot;insurance&quot;).ToString.ToLower.Equals(&quot;yes&quot;)]" sap:VirtualizedContainerService.HintSize="803,400" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'LABEL'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+          <ui:Click.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:Click.CursorPosition>
+          <ui:Click.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2d206b8da9fbd3025c9e1d1a7b059916" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='Yes * ' parentid='divMain' tag='LABEL' /&gt;" WaitForReady="INTERACTIVE" />
+          </ui:Click.Target>
+        </ui:Click>
+      </If.Then>
+      <If.Else>
+        <If Condition="[in_Config(&quot;insurance&quot;).ToString.ToLower.Equals(&quot;no&quot;)]" sap:VirtualizedContainerService.HintSize="464,254" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'LABEL'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7261f6c5ce15bdcc7fdd53dd8cda01dd" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname=' No' parentid='divMain' tag='LABEL' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+          </If.Then>
+        </If>
+      </If.Else>
+    </If>
+    <If Condition="[in_Config(&quot;book_if_confirm_berth&quot;).ToString.ToLower.Equals(&quot;yes&quot;)]" sap:VirtualizedContainerService.HintSize="803,254" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'LABEL'" sap:VirtualizedContainerService.HintSize="314,106" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+          <ui:Click.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:Click.CursorPosition>
+          <ui:Click.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2473a49a49f82a2a95fd0f2df5ab3e46" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl aaname='Book only if confirm berths are allotted.' parentid='divMain' tag='LABEL' /&gt;" WaitForReady="INTERACTIVE" />
+          </ui:Click.Target>
+        </ui:Click>
+      </If.Then>
+    </If>
+    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'INPUT  mobileNumber'" EmptyField="True" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" SendWindowMessages="False" SimulateType="False" Text="[in_Config(&quot;sms_mobile_num&quot;).ToString]">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e3a25f516d648f0e772e112d86882ab8" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl id='mobileNumber' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:TypeInto.Target>
+    </ui:TypeInto>
+    <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="803,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="803,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="GmailLogin.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_otp">[otp]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type Into 'INPUT  bookingOTP'" EmptyField="False" sap:VirtualizedContainerService.HintSize="803,134" sap2010:WorkflowViewState.IdRef="TypeInto_5" SendWindowMessages="False" SimulateType="False" Text="[otp]">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="62cb1bd6a46aa32702a010f6dc2657e1" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl id='bookingOTP' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:TypeInto.Target>
+    </ui:TypeInto>
+    <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON'" sap:VirtualizedContainerService.HintSize="803,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="99dc78efb465af48a72c20ad5404cf52" Selector="&lt;html app='chrome.exe' title='IRCTC Next Generation eTicketing System' /&gt;&lt;webctrl parentid='divMain' tag='BUTTON' type='submit' /&gt;" WaitForReady="INTERACTIVE" />
+      </ui:Click.Target>
+    </ui:Click>
+  </Sequence>
+</Activity>
