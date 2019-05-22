@@ -1,5 +1,5 @@
 # IRCTC tatkal ticket booking
-This repository helps users to book Tatkal tickets using RPA automation.
+This repository helps to demonstrate the UiPath(RPA) automation capabilities by booking a Tatkal ticket from IRCTC.
 
 
 
