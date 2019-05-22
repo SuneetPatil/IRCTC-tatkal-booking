@@ -11,23 +11,35 @@ As hundreds of people are booking the tickets, for a user to get confirmed ticke
 
 Our solution is aimed at addressing this issue. We are a team of certified RPA developers and our passion is to use RPA to improve user’s experience by automating mundane but important tasks. Through our solution, booking Tatkal tickets is as simple as filling a simple template and RPA will take care of the rest! With this, life just got easier for thousands of people every single day trying to book their Tatkal tickets.
 
+![alt architecture](https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Images/Architechture.png) 
 
-### Prerequisites
-[UiPath Community edition](https://www.uipath.com/developers/community-edition-download) 
-### Development 
-Clone this repository and open Main.xaml with UiPath Community edition. Then update config file.
 
-### Built With
-* [UiPath Community edition](https://www.uipath.com/developers/community-edition-download) - IDE used.
+### Prerequisites 
+* [UiPath Community edition.](https://www.uipath.com/developers/community-edition-download) 
+* IRCTC account should be linked to Gmail.
+* User should have UPI Id for payment.
+
+### How To Use This Code 
+* Update the Config.xlsx file under Data folder with required travel and user details.
+* Open and Run the Main.xaml file in UiPath Studio.
+
+### Built With 
+* [UiPath Community edition.](https://www.uipath.com/developers/community-edition-download) - IDE used.
+
+### Demo Video 
+[IRCTC Tatkal Ticket Booking.](https://youtu.be/XWgZB64LXLs)
 
 ## Screenshots
 <p>
-  <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Screenshots/User_input_excel.png" width="1366" height="768" alt="User_input_excel">
-   <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Screenshots/Booking_window.png" width="351" height="484" alt="Booking_window">
-  <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Screenshots/Booking_ticket.png" width="1366" height="768" alt="Booking_ticket">
+  <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Images/DataExcel.png" width="346" height="365" alt="User_Input_Excel">
+  
+  <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Images/Login.png" width="224" height="292" alt="User_Login">
+  
+  <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Images/UPI.png" width="1290" height="316" alt="User_Payment">
 </p>
 
-
+## RoadMap 
+WhatsApp Integration with our Framework for getting booking confirmation notification.
 
 ## License
 
