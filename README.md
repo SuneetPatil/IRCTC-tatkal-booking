@@ -15,7 +15,7 @@ Our solution is aimed at addressing this issue. We are a team of certified RPA d
 ### Prerequisites
 [UiPath Community edition](https://www.uipath.com/developers/community-edition-download) 
 ### Development 
-Clone this repository and open Main.xaml with UiPath Community edition.
+Clone this repository and open Main.xaml with UiPath Community edition. Then update config file.
 
 ### Built With
 * [UiPath Community edition](https://www.uipath.com/developers/community-edition-download) - IDE used.
