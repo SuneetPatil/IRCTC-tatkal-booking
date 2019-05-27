@@ -32,7 +32,7 @@ Login with OTP is an alternate way of logging into IRCTC other than regular logi
   <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Images/otp.png" height="40%" width="50%" alt="alt otp" vertical-align="middle" >
 </p>
 
-* Afetr successful login, our Solution takes travel details like source, destination, date of travel from XLS and autofills the IRCTC screen and searches from available trains.
+* After successful login, our Solution takes travel details like source, destination, date of travel from XLS and autofills the IRCTC screen and searches from available trains.
 
 * Once all the trains details are fetched, updates tatkal quota and then selects the train mentioned in the XLS and checks for seat availibility.
 
@@ -43,7 +43,7 @@ Login with OTP is an alternate way of logging into IRCTC other than regular logi
 
 * Once all the details are filled and submits for review page.
 <p align="center">
-  <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Images/passenger_confirmation.png" height="80%" width="70%" alt="alt passenger_confirmation">
+  <img src="https://github.com/SuneetPatil/IRCTC-tatkal-booking/blob/master/Images/passenger_confirmation.png" width="60%" alt="alt passenger_confirmation">
 </p>
 
 * Once ticket is confirmed, it fetchs UPI details from XLS and takes to make payment using UPI. User will get the notification about the payment in his/her mobile and requests to make payment.
