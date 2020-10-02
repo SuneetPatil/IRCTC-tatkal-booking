@@ -67,10 +67,17 @@ Login with OTP is an alternate way of logging into IRCTC other than regular logi
 * IRCTC account should be linked to Gmail
 * User should have UPI Id for payment
 
+### How to install UiPath and use it
+*go to this link https://www.uipath.com/
+*register UiPath Free Trial and download UiPath Community and install windows and mac os
+*after download you install Uipath
+*Open and Run the Main.xaml file(in the root of the folder) in UiPath Studio.
+
 ### How To Use This Code 
 * Please [Clone](https://github.com/SuneetPatil/IRCTC-tatkal-booking/archive/master.zip) this repository to your local system.
 * Update the Config.xlsx file (inside Data folder) with required travel and passenger details.
 * Open and Run the Main.xaml file(in the root of the folder) in UiPath Studio.
+
 
 ### Built With 
 * [UiPath Community edition.](https://www.uipath.com/developers/community-edition-download) - IDE used.
